@@ -1,0 +1,172 @@
+body {
+  background: #121212;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.button-pack {
+  display: flex;
+  gap: 20px;
+  width: 30%;
+  flex-wrap: wrap;
+}
+
+.btn {
+  position: relative;
+  background: #222;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+/* 1. Glow Button */
+.btn.glow {
+  box-shadow: 0 0 8px #ff3c78;
+  transition: box-shadow 0.3s ease;
+}
+.btn.glow:hover {
+  box-shadow:
+    0 0 12px #ff3c78,
+    0 0 20px #ff3c78,
+    0 0 30px #ff3c78,
+    0 0 40px #ff3c78;
+  color: #ff3c78;
+}
+
+/*2. Pixel grid Slide */
+.btn.pixel-grid-slide {
+  position: relative;
+  background: #121212;
+  color: #1e90ff;
+  border: 2px solid #1e90ff;
+  overflow: hidden;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+.btn.pixel-grid-slide::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(to right, #1e90ff 2px, transparent 2px),
+    linear-gradient(to bottom, #1e90ff 2px, transparent 2px);
+  background-size: 16px 16px;
+  top: 100%;
+  left: 0;
+  transition: top 0.4s ease;
+  pointer-events: none;
+  opacity: 0.6;
+  border-radius: 8px;
+  z-index: 0;
+}
+
+
+.btn.pixel-grid-slide:hover::before {
+  top: 0;
+}
+
+/* 3. Slide Text */
+.btn.slide-text {
+  background: transparent;
+  color: #00ffff;
+  border: 2px solid #00ffff;
+  overflow: hidden;
+}
+.btn.slide-text::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 0;
+  top: 0;
+  left: 0;
+  background: #00ffff;
+  z-index: -1;
+  transition: width 0.4s ease;
+}
+.btn.slide-text:hover::before {
+  width: 100%;
+}
+.btn.slide-text:hover {
+  color: #121212;
+}
+
+/* 4. Bounce */
+@keyframes bounceUp {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.btn.bounce {
+  background: #ff9ab8;
+  color: #121212;
+  transition: transform 0.3s ease;
+}
+.btn.bounce:hover {
+  animation: bounceUp 0.5s ease forwards;
+  color: #ff3c78;
+}
+
+/* 5. Neon Sweep */
+.btn.neon-sweep-pulse {
+  position: relative;
+  background: #121212;
+  color: #39ff14;
+  border: 2px solid #39ff14;
+  overflow: hidden;
+  transition: color 0.3s ease;
+  user-select: none;
+  z-index: 1;
+}
+
+.btn.neon-sweep-pulse span {
+  position: relative;
+  z-index: 2;
+}
+
+.btn.neon-sweep-pulse::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    #39ff14 50%,
+    transparent 100%
+  );
+  opacity: 0.6;
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+  z-index: 1;
+}
+
+.btn.neon-sweep-pulse:hover::before {
+  left: 100%;
+}
+
+.btn.neon-sweep-pulse:hover {
+  box-shadow:
+    0 0 8px #39ff14,
+    0 0 16px #39ff14,
+    0 0 32px #39ff14;
+}
+
